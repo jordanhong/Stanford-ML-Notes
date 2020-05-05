@@ -6,4 +6,4 @@ The online course can be accessed here: <https://www.coursera.org/learn/machine-
 ## My Course Materials
 
 I will update my progress with hand-written pdf notes and programming assignments as I progress through the course. 
-I am planning to comlete the full course in summer 2020. Stay tuned. 
+I am planning to complete the full course in summer 2020. Stay tuned. 
