@@ -1,0 +1,104 @@
+\section{Linear Regression with One Variable}
+    \subsection{Model Representation}
+        \subsubsection{Notations}
+            For a training set:
+           \begin{itemize}
+               \item \textbf{m} = Number of training examples.
+               \item \textbf{x} = ``input'' variable / features.
+               \item \textbf{y} = ``output'' variables / ``target'' variable.
+               \item \textbf{(x,y)} - one training example.
+               \item \textbf{(x\textsuperscript{i},y\textsuperscript{i})} denotes the i\textsuperscript{th} training example 
+
+           \end{itemize}
+
+        \subsubsection{Hypothesis Function}
+        
+           A hypothesis function (h) maps input (x) to estimated output (y).
+           How do we represent h?
+
+           \begin{equation} 
+               \boxed{ 
+                   \textbf{Hypothesis Function}\hspace{10pt}  h_\theta (x) = \theta_0 + \theta_1x
+           }
+              \label{eq:hypothesis}
+           \end{equation}
+
+           We can apply \emph{Univariate linear regression} with respect to x. 
+    \subsection{Cost Function}
+
+    Recall \ref{eq:hypothesis}. The $\theta_i$s are parameters we have to choose. The intuition is is that we want to choose $\theta_i$ s such that h\textsubscript{$\theta$} is closest to y for our training examples (x,y).
+    
+
+      \begin{equation} 
+          \boxed{ 
+              \textbf{Cost Function}\hspace{10pt} J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)} )^2
+      }
+          \label{eq:cost}
+      \end{equation}
+      
+
+      \par \textbf{Summary} 
+      \begin{enumerate}
+          \item \textbf{Hypothesis  }$h_\theta (x) = \theta_0 + \theta_1x$
+          \item \textbf{Parameters } $\theta_0, \theta_1$
+          \item \textbf{Cost Function }$J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)} )^2$
+          \item \textbf{Goal } $\min_{\theta_0, \theta_1} J(\theta+0, \theta_1)$
+    
+      \end{enumerate}
+        
+
+          
+   
+    
+    \subsection{Gradient Descent}
+        \subsubsection{Intuition}
+            \begin{enumerate}
+                \item We have some function $J(\theta_0, \theta_1)$, we want to $\min_{\theta_0, \theta_1} J (\theta_0, \theta_1)$
+                \item Outline: start with some $\theta_0, \theta_1$, keep changing  $\theta_0, \theta_1$ to reduce $J(\theta_0, \theta_1)$ until we end up at a minimum. 
+            \end{enumerate}
+        \subsubsection{Gradient Descent Algorithm}
+            \textbf{Algorithm} \\
+                repeat until convergence\{  
+                    \[ \theta_j := \theta_j - \alpha \frac{\partial }{\partial \theta_j} J(\theta_0, \theta_1)\mbox{\hspace{10pt} (for j=0 and j=1)} 
+                   .\] \}
+        \\
+
+
+           \textbf{Notes}
+               \begin{enumerate}
+                   \item the := denotes non-blocking assignment, i.e. simultaneously updates $\theta_0 and \theta_1$ 
+                   \item We use the derivative to find a local minimum. 
+                   \item $\alpha$ denotes the learning rate. Gradient descent can converge to a local minimum even when the learning rate $\alpha$ is fixed. As we approach a local minimum, gradient descent will automatically take smaller steps. Therefore it is not needed to decrease $\alpha$ over time. 
+               \end{enumerate}
+
+       \subsubsection{Gradient Descent with Linear Regression}
+     
+       Recall, we have:
+       \begin{enumerate}
+           \item Gradient Descent Algorithm: \\ 
+               \linebreak
+               repeat until convergence\{  
+                    \[ \theta_j := \theta_j - \alpha \frac{\partial }{\partial \theta_j} J(\theta_0, \theta_1)\mbox{\hspace{10pt} (for j=0 and j=1)} 
+                   .\] \}
+
+
+           \item Linear Regression Model:
+               \begin{center}
+                   \[h_\theta (x) = \theta_0 + \theta_1x\]
+                   \[J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)} )^2\]             
+
+               \end{center}
+
+       \end{enumerate}
+            
+                 
+                
+    We can substitute the above equations, which gives us:
+       \begin{center}
+           \[\theta_0 := \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)} )\] 
+               \[\theta_1 := \theta_1 - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)} ) \cdot x^{(i)}\]  
+
+       
+       \end{center} 
+    
+

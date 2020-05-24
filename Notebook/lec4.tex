@@ -1,0 +1,107 @@
+\section{Linear Regression with Multiple Variables}
+
+    \subsection{Multiple features}
+    Recall in the single variable case, we have a single input (x), two parameters($\theta_0, \theta_1$). The hypothesis can be expressed as: \[
+        h_\theta(x)= \theta_0 + \theta_1x
+    .\] 
+  
+    Now, consider a generalized case where there are multiple features: X\textsubscript{1}, X\textsubscript{2}, X\textsubscript{3}. The information can be organized in a table with example numerical values:
+    \begin{table}[htbp]
+            \begin{center}
+                 \begin{tabular}{||c c c c||} 
+                 \hline
+                  Sample Number (i) & X\textsubscript{1} &  X\textsubscript{2} & y \\ [0.5eX] 
+                 \hline\hline
+                 1 & 6 & 87837 & 787 \\ 
+                 \hline
+                 2 & 7 & 78 & 5415 \\
+                 \hline
+                 3 & 545 & 778 & 7507 \\
+                 \hline
+                 4 & 545 & 18744 & 7560 \\
+                 \hline
+                 5 & 88 & 788 & 6344 \\ [1ex] 
+                 \hline
+                \end{tabular}
+             \caption{Sample Table}
+             \label{tab:data}
+         \end{center}
+     \end{table}
+
+
+        From Table \ref{tab:data}, one can see that each row is a sample a feature on each column.
+
+    \subsubsection{Notation}
+
+        \begin{enumerate}
+            \item \textbf{n}: number of features.
+            \item \textbf{x\textsuperscript{(i)}}: (row vector) input features of the i\textsuperscript{th} training example. i= 1, 2,\dots, m. 
+            \item \textbf{x\textsuperscript{(i)}\textsubscript{j}}: value of feature j in the i\textsuperscript{th} training example. j= 1, 2, \dots, n.  
+
+        \end{enumerate}
+
+    \subsubsection{Hypothesis}
+
+        Previously, 
+        \[ 
+        h_\theta(x)= \theta_0 + \theta_1\cdot x 
+        \]
+    
+
+        Now, we can extend the hypothesis to :
+
+        \[
+            h_\theta(x) = \theta_0\cdot1 + \theta_1\cdot x_1 + \theta_2\cdot x_2  
+        \]
+
+        For convenience of notation, let's define x\textsubscript{0}=1, i.e. x\textsuperscript{i}\textsubscript{0}=1 $\forall$ i.
+
+        Therefore, we have: \textbf{x}= $\left[ \begin{array}{c}
+                                                    x_0 \\
+                                                    x_1 \\
+                                                    x_2 \\
+                                                    \vdots \\
+                                                    x_n
+                                                 \end{array}
+                                          \right]$
+                                          and \textbf{$\theta$} = $\left[ \begin{array}{c}
+                                                    \theta_0 \\
+                                                    \theta_1 \\
+                                                    \theta_2 \\
+                                                    \vdots \\
+                                                    \theta_n \\
+                                                 \end{array}
+                                          \right]$. 
+        Then, the hypothesis function can be written as:
+
+            \begin{equation}
+                \begin{split}
+                 h_\theta (x) &= \left[ \begin{array}{ccccc}
+                                                \theta_0 & \theta_1 & \theta_2 & \dots & \theta_n 
+        \end{array} 
+                                    \right] \cdot \left[ \begin{array}{c}
+                                                                x_0 \\
+                                                                x_1 \\
+                                                                x_2 \\
+                                                                \vdots \\
+                                                                x_n
+                                                                 \end{array} \right] \\
+                                                                 & = \theta^T\cdot \textbf{x}
+            \end{split}
+        \end{equation}
+        
+
+        This is \emph{Multivariate linear regression}.
+
+
+
+
+
+
+
+
+
+
+    \subsection{Gradient Descent for Multiple Variables}
+
+    Blah
