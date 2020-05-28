@@ -17,11 +17,11 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-    
-    delta = sum((theta(1) + theta(2) .* X(:,2)) - y); % Un-Vectorized
-
-
-
+    %this is doing the arithmetic per row and summing over entire column
+    delta_1 = sum((theta(1) + theta(2) .* X(:,2)) - y); % Un-Vectorized 
+    theta(1) = theta(1) - alpha/m*delta_1;
+    delta_2 = sum( ((theta(1) + theta(2).*X(:,2)) -y).*X(:,2) );
+    theta(2) = theta(2) -alpha/m*delta_2;
 
     % ============================================================
 
@@ -29,5 +29,6 @@ for iter = 1:num_iters
     J_history(iter) = computeCost(X, y, theta);
 
 end
-
+    % Checking point: plot J_history to see if error plateus.
+    % plot(J_history)
 end
