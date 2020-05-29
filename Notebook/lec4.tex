@@ -103,5 +103,130 @@
 
 
     \subsection{Gradient Descent for Multiple Variables}
+        \subsubsection{Algorithm}
+            \textbf{Summary for Multivariables} 
+                \begin{enumerate}
+                    \item \textbf{Hypothesis  }$h_\theta (x) = \theta^T \cdot \textbf{x}$
+                    \item \textbf{Parameters } $\mathbf{\theta}$
+                    \item \textbf{Cost Function } $ J(\mathbf{\theta}) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)} )^2 $
+                    \item \textbf{Goal } $ \min_{\mathbf{\theta}} J( \mathbf{\theta}) $
+                \end{enumerate}
 
-    Blah
+        
+                \textbf{Gradient Descent for Multiple Variables}
+                        repeat until convergence\{  
+                            \[ \theta_j := \theta_j - \alpha \frac{\partial }{\partial \theta_j} J(\mathbf{\theta})\mbox{\hspace{10pt} (for j=0, 1,$\ldots$ n)}  
+                            \] 
+                        \}  \\
+
+
+                        
+                       \[\theta_j := \theta_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta(\mathbf{x^{(i)}}) - y^{(i)} ) \cdot x_j^{(i)}\] \\ 
+                       
+                       Note: $x_0^{(i)} = 1$, by definition.
+        
+         \subsubsection{Vectorized Implementation}
+
+         One can work out the linear algebra and arrive at the following simplification using vectorized operations.
+            The cost function $J$ can be expressed as:
+            \begin{equation}
+                J(\theta) = \frac{1}{2m} (\mathbf{X\theta} - \mathbf{y})^T (\mathbf{X\theta} - \mathbf{y} )
+                \label{eq:vectorized-cost}
+            \end{equation}
+            
+            The MATLAB implementation is as follows:
+            \begin{lstlisting}
+                m = length(y); % calculate how many samples 
+                J = 1/(2*m)*((X*theta-y).')*(X*theta-y);
+
+            \end{lstlisting}
+
+
+            Gradient descent can be vectorized in the form:
+            \begin{equation}
+                \theta = \theta - \frac{\alpha}{m} \cdot \mathbf{X}^T \cdot (\mathbf{X\theta} - \mathbf{y}) 
+                \label{eq:vectorized-gradient-descent}
+            \end{equation}
+
+            The MATLAB implementation is as follows:
+            \begin{lstlisting}
+                m = length(y); % number of training examples
+                for iter = 1:num_iters
+                    theta = theta - alpha/m* X.'*(X*theta -y);
+            \end{lstlisting}
+
+
+    \subsection{Gradient Descent in Practise I: Feature Scaling} 
+    
+        \begin{itemize}
+            \item Idea: ensure each featurre are on a similar scale
+            \item Get every feature into approx. $-1\leq x_i \leq1 $($\sim$ order)
+            \item \textbf{Mean Normalization}: Replace $x_i$ with $\frac{x_i - \mu_i}{s_i}$, where $\mu_i$ and $s_i$ are the sample mean and standard deviation, respectively.
+
+        \end{itemize}
+
+    \subsection{Gradient Descent in Practise II: Learning Rate}
+        
+        \begin{itemize}
+            \item Ensure gradient descent is working: plot $J_\theta$ over each number of iteration (not over $\theta$ !)
+            \item Example automatic convergence test: for sufficiently small $\alpha$ $J_\theta$ should decrease by less than $10^{-3}$ i one iteration.
+            \item If $\alpha$ is too small, gradient descent can be slow to converge.
+            \item If $\alpha$ is too large, gradient descent may not converge.
+            \item To choose $\alpha$, try 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1\ldots (by 3x)
+        \end{itemize}
+
+
+    \subsection{Features and Polynomial Regression}
+        We can fit into different polynomials by choice, using multivariate regression. Recall
+        \[
+            h_\theta (x) = \theta_0 + \theta_1x_1 + \theta_2x_2 +\theta_3x_3 
+        \]  
+
+        Let x\textsubscript{1} be x\textsuperscript{1}, x\textsubscript{2} be x\textsuperscript{2}, x\textsubscript{3} be x\textsuperscript{3}.
+        Note we should still apply feature scaling to x\textsubscript{1}, x\textsubscript{2}, and x\textsubscript{3} individually! 
+
+
+    \subsection{Normal Equation}
+
+        The normal equation provides a method to solve for $\theta$ analytically. For our data with m samples, n features, recall each sample can be written as: 
+       \[ 
+        \mathbf{x^{(i)}} =  \begin{bmatrix}
+            x_0^{(i)}\\
+            x_1^{(i)} \\
+            x_2^{(i)} \\
+            \vdots \\
+            x_j^{(i)}\\
+           \vdots \\
+           x_n^{(i)}
+            \end{bmatrix}
+        \]
+        We can construct a design matrix:
+        \[ \mathbf{X} = \begin{bmatrix}
+            \horzbar & (x^{(1)})^T & \horzbar \\
+            \horzbar & (x^{(2)})^T & \horzbar \\
+            \horzbar & (x^{(3)})^T & \horzbar \\
+                     & \vdots      &          \\
+            \horzbar & (x_{m}^{T}  & \horzbar \\
+         \end{bmatrix}
+        \]
+
+         Then $\theta$ can be found by the normal equation: 
+                 \begin{equation}
+                 \mathbf{\theta} = \mathbf{(X^TX)}^{-1}\mathbf{Ty}
+                     \label{eq:normal}
+                 \end{equation}
+
+        
+        Normal equation is useful as no $\alpha$ is required to and we do not need to iterate. However, we do have to compute $(X^TX)^{-1}$, which can be computationally expensive when n is large. The complexity is O($n^3$) for inverse operations. Gradient Descent is useful when n is large (many features). 
+
+     \subsection{Normal Equation and Non-invertibility}
+
+     What if $(X^TX)^{-1}$ is non-invertible? 
+
+     \begin{itemize}
+         \item Redundant features (linearly dependent), i.e. having same information in two different units.
+         \item Too many features (i.e. m $\leq$ n). Delete some features or use regularization
+     \end{itemize}
+
+
+
