@@ -1,0 +1,54 @@
+%        File: Stanford_Machine_Learning_Notes.tex
+%     Created: Mon May 18 11:00 pm 2020 E
+% Last Change: Mon May 18 11:00 pm 2020 E
+%
+\documentclass[letter]{article}
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}} % for complicated matrices
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+\title{%
+    Machine Learning\\
+    \large Stanford University \\
+    Professor Andrew Ng}
+
+\author{Jordan Hong}
+\date{\today}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    frame=single,%
+    morekeywords={matlab2tikz},%
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},%
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},%
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+    gobble=8,%
+    tabsize=4
+}
+
+
+
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+    \input{lec1.tex}
+    \input{lec2.tex}
+    \input{lec3.tex}
+    \input{lec4.tex}
+
+\end{document}
+
+
