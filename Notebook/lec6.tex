@@ -164,3 +164,25 @@
         
 
         We then give to the function "fminunc()" our cost function, our initial vector of theta values, and the "options" object that we created beforehand.
+        \subsection{Multiclass Classification: One-vs-All}
+            Now, let's extend the binary classification of data to multi-classes, i.e expanding our definition of y s.t. y=\{0, 1, \ldots, n\}.
+            We will divide out problem into n+1 (0\ldots n) binary classification problems. In each problem, we predict the probability that y is a memember of one of our class. We train a logistic regression classifier $h_\theta ^{(i)} (x) $ $\forall$ i to predict y = i:
+            \begin{equation}
+                h_\theta^{(i)} (x) = P (y=i \mid x;\theta)
+                \label{eq:multiclass-logistic-classifier}
+            \end{equation}
+
+            Figure \ref{fig:multi-class-regression} shows an example of the procedure of classifying three classes. We choose one class and then lump all the others into a single second class (hence the name One-vs-All). We apply the binary logisic regression repeatedly and use the hypothesis that returns the highest value. 
+
+            \begin{equation}
+                prediction\,=\: \max_{i}\: (\, h_\theta ^{(i)} (x) \,)   
+                \label{eq:max-log-regre}
+            \end{equation}
+            
+
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[width=\textwidth]{image/multi-class.png}
+                \caption{Example of Multiclass Logistic Regression}
+                \label{fig:multi-class-regression}
+            \end{figure}
