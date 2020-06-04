@@ -18,10 +18,19 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage[T1]{fontenc}
+% macro to select a scaled-down version of Bera Mono (for instance)
+\makeatletter
+\newcommand\BeraMonottfamily{%
+  \def\fvm@Scale{0.85}% scales the font down
+  \fontfamily{fvm}\selectfont% selects the Bera Mono font
+}
+\makeatother
+
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
 \lstset{language=Matlab,%
-    %basicstyle=\color{red},
+    basicstyle=\BeraMonottfamily,
     breaklines=true,%
     frame=single,%
     morekeywords={matlab2tikz},%
@@ -44,10 +53,13 @@
 \begin{document}
 \maketitle
 \tableofcontents
+\newpage
     \input{lec1.tex}
     \input{lec2.tex}
     \input{lec3.tex}
     \input{lec4.tex}
+    \input{lec5.tex}
+    \input{lec6.tex}
 
 \end{document}
 

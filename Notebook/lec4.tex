@@ -201,14 +201,17 @@
             \end{bmatrix}
         \]
         We can construct a design matrix:
-        \[ \mathbf{X} = \begin{bmatrix}
-            \horzbar & (x^{(1)})^T & \horzbar \\
-            \horzbar & (x^{(2)})^T & \horzbar \\
-            \horzbar & (x^{(3)})^T & \horzbar \\
-                     & \vdots      &          \\
-            \horzbar & (x_{m}^{T}  & \horzbar \\
-         \end{bmatrix}
-        \]
+        \begin{equation}
+            \mathbf{X} = \begin{bmatrix}
+                \horzbar & (x^{(1)})^T & \horzbar \\
+                \horzbar & (x^{(2)})^T & \horzbar \\
+                \horzbar & (x^{(3)})^T & \horzbar \\
+                         & \vdots      &          \\
+                \horzbar & (x_{m}^{T}  & \horzbar \\
+             \end{bmatrix}
+             \label{eq:design-matrix}
+        \end{equation}
+
 
          Then $\theta$ can be found by the normal equation: 
                  \begin{equation}
