@@ -9,7 +9,7 @@
         
             \begin{figure}[htbp]
                 \centering
-                \includegraphics{image/fitting.png}
+                \includegraphics[width=\textwidth]{image/fitting.png}
                 \caption{Three scenarios of fitting: underfit(left), good fit (middle), and overfit(right).}
                 \label{fig:fitting}
             \end{figure}
@@ -61,7 +61,7 @@
                 \theta_j := \theta_j - \alpha [ ( \frac{1}{m} \sum_{i=1}^{m} ( h_\theta (x^{(i)}) - y^{(i)}) x_j^{(i)} ) + \frac{\lambda}{m}\theta_j]
             \] 
 
-        \} , where j\in \{1, 2, \ldots, n\} \\
+        \} , where $j\in \{1, 2, \ldots, n\}$ \\
 
         The above equation can be re-arranged to get the final form:
 
@@ -96,7 +96,7 @@
                      \label{eq:regularized-normal}
                  \end{equation}
 
-                 where $ L \in \mathbb{R}^{(n+1)\times(n+1)}$ 
+                 where $ L \in \mathbb{R}^{(n+1) \times (n+1)}$ 
 
                 \begin{equation}
                     L = \begin{bmatrix}
@@ -106,11 +106,10 @@
                             & &  & \ddots & \\
                             & & & & & 1 
                         \end{bmatrix}
-
                     \label{eq:regularized-L}
                 \end{equation}
                 
-                Supopose non-invertibility arises: $m \leq n$, i.e #examples is less than or equal to number of features, then using a $\lambda > 0$ in Equation \ref{eq:regularized-normal} will resolve the non-invertibility.
+                Supopose non-invertibility arises: $m \leq n$, i.e \#examples is less than or equal to number of features, then using a $\lambda > 0$ in Equation \ref{eq:regularized-normal} will resolve the non-invertibility.
 
 
 
