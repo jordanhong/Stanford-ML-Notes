@@ -89,9 +89,9 @@
                     J(\theta)   &= \frac{1}{m}\, \sum_{i=1}^{m}\, Cost\,(\, h_\theta ( x^{(i)})\, ,\, y^{(i)} ) \\
                     &= \frac{-1}{m} \, [ \; \sum_{i=1}^{m}\, y^{(i)}\, log\, h_\theta (x^{(i)})\; +\; (1-y^{(i)})\: log\:(\,1-h_\theta(x^{(i)})\,) \;] 
                 \end{split}
-                \label{eq:simplified-cost-function}
+                \label{eq:simplified-logistic-cost-function}
             \end{equation}
-            Equation \ref{eq:simplified-cost-function} is based on Maximum Likelihood Estimation.
+            Equation \ref{eq:simplified-logistic-cost-function} is based on Maximum Likelihood Estimation.
 
 
             A vectorized implementation is, for a design matrix $\mathbf{X}$:
@@ -112,8 +112,13 @@
 
             
             For gradient descent,we would want to $\min_{\theta} J(\theta)$:\\ 
+
              Repeat \{
-                \[ \theta_j := \theta_j - \alpha \frac{\partial }{\partial \theta_j} J(\theta)\] \}\\
+                \[ 
+                \theta_j := \theta_j - \alpha \frac{\partial }{\partial \theta_j} J(\theta)
+                \]
+
+            \} \\
 
    
             We can compute the partial derivative of $J(\theta)$, which is identical to that of linear regression:
