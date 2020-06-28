@@ -24,7 +24,7 @@ Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):en
 
 % Setup some useful variables
 m = size(X, 1);
-         
+K = num_labels;         
 % You need to return the following variables correctly 
 J = 0;
 Theta1_grad = zeros(size(Theta1));
@@ -62,12 +62,53 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Part 1: Compute cost without regularization
+    % Construct y matrix
+    Y = recode(y, m, K); 
+    %fprintf("Size of Y\n")
+    %size(Y)
+    % Add 1 to each example
+    X = [ones(m, 1) X];
+
+    %fprintf("Size of X\n")
+    %size(X)
+    %fprintf("Size of Theta1\n")
+    %size(Theta1)
+
+    A_2 = sigmoid( X*(Theta1.'));
+    A_2 = [ones(m, 1) A_2];
+    
+
+    %fprintf("Size of A_2")
+    %size(A_2)
+    %fprintf("Size of Theta2")
+    %size(Theta2)
+
+    H = sigmoid(A_2*(Theta2.'));
+    %H = A_2*(Theta2.');
+
+    
+    % Cost matrix (each row is an example, with K elements
+    cost = Y.*log(H) + (1-Y).*log(1-H);
+
+    % Sum over each row to get a column of all examples (dim =m)
+    cost_example = sum(cost, 2);
+
+    % Sum the column to get a scalar 
+    cost_total = sum(cost_example, 1);
+
+    % Normalize 
+    J = -cost_total/m;
 
 
 
-
-
-
+    % Regularized
+    Theta1_reg = Theta1 (:, 2:end); %remove bias term from each row
+    Theta2_reg = Theta2 (:, 2:end); %remove bias term from each row
+    sum_1 = sum( sum( Theta1_reg.^2 , 1), 2);
+    sum_2 = sum( sum( Theta2_reg.^2 , 1), 2);
+    reg = lambda/(2*m)* (sum_1+sum_2);
+    J = J + reg;
 
 
 
@@ -88,4 +129,12 @@ Theta2_grad = zeros(size(Theta2));
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
 
+end
+
+
+function Y = recode (y, m,K)
+    Y = zeros(m,K);
+    for i = 1:m
+        Y (i, y(i,1)) = 1;
+    end
 end
