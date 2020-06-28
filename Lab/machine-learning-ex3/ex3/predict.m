@@ -21,13 +21,26 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% We will transpose the layers such that each column represents an example (set of unit
+% Input layer
+
+a_1 = [ones(1,m); X.'];
+
+% Hidden layer
+z_2 = Theta1*a_1;
+col = size(z_2, 2);
+z_2 = sigmoid(z_2.').';
+a_2 = [ones(1,col) ; z_2];
+
+% Output layer
+z_3 = Theta2*(a_2);
+col= size(z_3, 2);
+a_3 = sigmoid(z_3.').';
 
 
-
-
-
-
-
+% Obtain max index of hypothesis
+H = a_3.'; % transpose back 
+[Results, p] = max(H, [], 2);
 
 % =========================================================================
 
