@@ -15,7 +15,9 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
-
+for deg = 1:p
+    X_poly(:, deg) = X.^deg;
+end
 
 
 

@@ -19,6 +19,16 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+m = length(y); % calculate how many samples 
+reg = lambda/(2*m)*(sum(theta.^2)-theta(1)^2);
+J = 1/(2*m)*((X*theta-y).')*(X*theta-y) + reg;
+
+% Calculate gradient
+h = X*theta;
+grad = 1/m*X.'*(h-y)+lambda/m*theta;
+% modify grad(1)
+grad(1) = grad(1) - lambda/m*theta(1); 
+
 
 
 
