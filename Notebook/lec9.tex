@@ -1,0 +1,116 @@
+\section{Neural Networks: Learning}
+\subsection{Cost Function}
+    Define variables:
+    \begin{itemize}
+        \item L :total number of layers in the network.
+        \item s\textsubscript{l}: number of units (not counting bias unit) in layer l.
+        \item K: number of output classes.
+    \end{itemize}
+
+    Recall for classifications, we have binary and multi-class:
+    \begin{enumerate}
+        \item Binary classification:
+            \begin{itemize}
+                \item y = 0 or 1.
+                \item 1 output unit, i.e. $h_\Theta (x) \in \mathbb{R}$.
+                \item S\textsubscript{L} = 1; K = 1.
+            \end{itemize}
+        \item Multi-class classification: 
+            \begin{itemize}
+                \item $ y \in \mathbb{R}^K$
+                \item S\textsubscript{L}= K. K$\geq$3.
+            \end{itemize}
+    \end{enumerate}
+
+    Recall the cost function for regularized logistic regression in Equation \ref{eq:logistic-cost-function-regularized}, shown below:
+    \[
+    J(\theta) = \frac{-1}{m} \, \sum_{i=1}^{m}\, [ y^{(i)}\, log\, h_\theta (x^{(i)})\; +\; (1-y^{(i)})\: log\:(\,1-h_\theta(x^{(i)})\,) ] + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2
+    \]
+
+    For neural networks, we will extend Equation \ref{eq:logistic-cost-function-regularized} into a generalized form:
+    \begin{equation}
+        \begin{aligned}
+    J(\Theta) = & \frac{-1}{m} \, \sum\limits_{i=1}^{m}\, \sum\limits_{k=1}^{K}\,[ y_k^{(i)}\, log\, h_\theta (x^{(i)})_k\; +\; (1-y_k^{(i)})\: log\:(\,1-h_\theta(x^{(i)})_k\,) ] \\
+    & + \frac{\lambda}{2m} \sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}} (\Theta_{j, i}^{(l)})^2
+    \end{aligned}
+        \label{eq:neural-network-cost-function-regularized}
+    \end{equation}
+
+    In the first part of Equation \ref{eq:neural-network-cost-function-regularized}, we added a summation to account for multiple output nodes. 
+    Note:
+    \begin{itemize}
+        \item Double sum adds up logistic regression costs calculated for each cell in the output layer.
+        \item Triple sum adds up the squares if all individuals $\Theta$s in the entire network.
+        \item The i in the triple sum does not refer to the training example i !
+    \end{itemize}
+
+\subsection{Backpropagation Algorithm}
+    \begin{itemize}
+        \item Backpropagation: neural-network terminology for minimizing cost function.
+        \item Gradient Computation: need to computer $J(\Theta)$ and $\frac{\partial }{\partial \Theta^{(l)}_{ij}} J(\Theta)$
+
+    \end{itemize}
+
+    Given a training set \{ $(x^{(1)}, y^{(1)}) \dots (x^{(m)}, y^{(m)})$\}. Set $\Delta^{(l)}_{i,j}=0$ $\forall$ l,i,j.\\
+          
+    For all training examples t=1:m:
+    \begin{enumerate}
+        \item Set $a^{(1)} := x^{(t)}$
+        \item Perform forward propagation to computer all the nodes ($a^{(l)}$).
+        \item Using $y^{(t)}$, compute $\delta^{(L)}=a^{(L)} -y^{(t)} $. (Vectorized deviation of output units to correct values).
+        \item Backpropagate the error:
+            \[
+                \delta^{(l)} = ( (\Theta ^{(l)})^T \delta ^{(l+1)}) .* a^{(l)} .* (1 - a^{(l)})
+            \] 
+            This equation makes use of the fact that the derivative of the sigmoid function:
+            \[
+                g'(z^{(l)}) = a^{(l)} .* (1-a^{(l)})
+            \] 
+        \item Obtain the estimation of gradient ($\nabla J(\Theta)$). Intuitively, $\delta^{(l)}$ is the error for the activation unit in layer l: a\textsuperscript{l}. more formally, the delta values are the derivatives of the cost functions. \\
+            It can be shown that 
+            \[
+                \boxed{
+                \frac{\partial}{\partial \Theta^{(l)}_{i,j}} J (\Theta) = a^{(l)}_j \cdot \delta_i^{(l+1)}
+            }
+            \] 
+            Hence, a vectorized implementation of the accumulated gradient  is:
+            \[
+                \Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}(a^{(l)})^T
+            \] 
+    \end{enumerate}
+    We then normalize and add regularization to obtain the gradient:
+    \begin{itemize}
+        \item $D_{i,j}^{(l)} := \frac{1}{m} (\Delta^{(l)}_{i,j} + \lambda\Theta^{(l)}_{i,j})$, if j $\neq$ 0
+        \item $D_{i,j}^{(l)} := \frac{1}{m} \Delta^{(l)}_{i,j}$, if j=0
+
+    \end{itemize}
+
+    And thus $\frac{\partial}{\partial \theta^{(l)}} = D^{(l)}$.
+\subsection{Gradient checking}
+    \begin{itemize}
+        \item Purpose: Eliminates error from escaping. Assuring backpropagation is working as intended.
+        \item Approx derivative as:\\
+            \[
+                \frac{\partial}{\partial \Theta_j} J (\Theta) \approx  \frac{J(\Theta_1, \dots, \Theta_j +\epsilon, \dots, \Theta_n)-J(\Theta_1, \dots, \Theta_j -\epsilon, \dots, \Theta_n)}{2 \epsilon}
+            \] 
+        \item Compute the gradient approximation and compare with backpropagation(delta vector)
+        \item Turn off gradient checking as this is computationally expensive.
+    \end{itemize}
+    Below is an implementation of gradient checking in MATLAB code:
+    \begin{lstlisting}
+        epsilon = 1e-4;
+        for i = 1:n,
+          thetaPlus = theta;
+          thetaPlus(i) += epsilon;
+          thetaMinus = theta;
+          thetaMinus(i) -= epsilon;
+          gradApprox(i) = (J(thetaPlus) - J(thetaMinus))/(2*epsilon)
+        end;
+    \end{lstlisting}
+
+\subsection{Random Initialization}
+    \begin{itemize}
+        \item Initializing all theta weights to zero does not work. In backpropagation, all nodes will update to the same value repeatedly, creating \textbf{symmetry}. 
+        \item Symmetry breaking: initialize to values that range in [-$\epsilon, \epsilon$]
+    \end{itemize}
+

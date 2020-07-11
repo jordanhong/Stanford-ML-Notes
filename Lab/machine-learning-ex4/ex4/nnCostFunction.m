@@ -102,7 +102,7 @@ Theta2_grad = zeros(size(Theta2));
 
 
 
-    % Regularized
+    % Adding Regularization
     Theta1_reg = Theta1 (:, 2:end); %remove bias term from each row
     Theta2_reg = Theta2 (:, 2:end); %remove bias term from each row
     sum_1 = sum( sum( Theta1_reg.^2 , 1), 2);
@@ -110,10 +110,37 @@ Theta2_grad = zeros(size(Theta2));
     reg = lambda/(2*m)* (sum_1+sum_2);
     J = J + reg;
 
+% Part 2 - Backpropagation algorithm
 
+    % size(X) %5000 x 401 --> one example: 1 x 401
+    % size(A_2) %5000 x 26 --> one example: 1x 26
+    % size(Theta1) %25 401
+    % size(Theta2) % 10 26
+    % size(X)   %5000 x401 
+    Z_2 = X*(Theta1.');
+    % size(Z_2) %5000 x 10
 
+    D_1 = zeros(size(Theta1));
+    D_2 = zeros(size(Theta2));    
+    for t = 1:m
+        delta_3  = H (t, :) - Y(t, :); %size 1 x 10
+        delta_2 = delta_3*Theta2;
+        delta_2  = delta_2(: , 2:end)  .* sigmoidGradient(Z_2(t, :)); %size 1x 25
+        d_2 = (delta_3.') *A_2(t, :);
+        d_1 = (delta_2.') *X(t, :);
+        D_2 = D_2 + d_2;
+        D_1 = D_1 + d_1; 
+    end
 
+    Theta2_grad = D_2/m;
+    Theta1_grad = D_1/m;
 
+    % Add regularization to Backprop
+    reg1 = lambda/m * [zeros(size(Theta1, 1), 1)  Theta1(:, 2:end)]; % don't regularize bias unit
+    reg2 = lambda/m * [zeros(size(Theta2, 1), 1)  Theta2(:, 2:end)]; % don't regularize bias unit
+    
+    Theta1_grad = Theta1_grad + reg1; 
+    Theta2_grad = Theta2_grad + reg2; 
 
 
 
