@@ -1,0 +1,336 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/62f0144/
+A	fmincg.m	/^        A = 6*(f2-f3)\/z3+3*(d2+d3);                                 % cubic fit$/;"	v
+A	fmincg.m	/^    A = 6*(f2-f3)\/z3+3*(d2+d3);                      % make cubic extrapolation$/;"	v
+B	fmincg.m	/^        B = 3*(f3-f2)-z3*(d3+2*d2);$/;"	v
+B	fmincg.m	/^    B = 3*(f3-f2)-z3*(d3+2*d2);$/;"	v
+D_	lib/jsonlab/saveubjson.m	/^function val=D_(num)$/;"	f
+D_a	lib/jsonlab/saveubjson.m	/^function data=D_a(num,type,dim,format)$/;"	f
+EXT	fmincg.m	/^EXT = 3.0;                    % extrapolate maximum 3 times the current bracket$/;"	v
+INT	fmincg.m	/^INT = 0.1;    % don't reevaluate within 0.1 of the limit of the current bracket$/;"	v
+I_	lib/jsonlab/saveubjson.m	/^function val=I_(num)$/;"	f
+I_a	lib/jsonlab/saveubjson.m	/^function data=I_a(num,type,dim,format)$/;"	f
+J	ex4.m	/^J = nnCostFunction(nn_params, input_layer_size, hidden_layer_size, ...$/;"	v
+J	nnCostFunction.m	/^J = 0;$/;"	v
+M	fmincg.m	/^      M = M - 1; i = i + (length<0);                           % count epochs?!$/;"	v
+M	fmincg.m	/^    M = M - 1; i = i + (length<0);                             % count epochs?!$/;"	v
+MAX	fmincg.m	/^MAX = 20;                         % max 20 function evaluations per line search$/;"	v
+RATIO	fmincg.m	/^RATIO = 100;                                      % maximum allowed slope ratio$/;"	v
+RHO	fmincg.m	/^RHO = 0.01;                            % a bunch of constants for line searches$/;"	v
+SIG	fmincg.m	/^SIG = 0.5;       % RHO and SIG are the constants in the Wolfe-Powell conditions$/;"	v
+S_	lib/jsonlab/saveubjson.m	/^function val=S_(str)$/;"	f
+Theta1	checkNNGradients.m	/^Theta1 = debugInitializeWeights(hidden_layer_size, input_layer_size);$/;"	v
+Theta1	ex4.m	/^Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...$/;"	v
+Theta1	nnCostFunction.m	/^Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...$/;"	v
+Theta1_grad	nnCostFunction.m	/^Theta1_grad = zeros(size(Theta1));$/;"	v
+Theta2	checkNNGradients.m	/^Theta2 = debugInitializeWeights(num_labels, hidden_layer_size);$/;"	v
+Theta2	ex4.m	/^Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...$/;"	v
+Theta2	nnCostFunction.m	/^Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...$/;"	v
+Theta2_grad	nnCostFunction.m	/^Theta2_grad = zeros(size(Theta2));$/;"	v
+W	debugInitializeWeights.m	/^W = reshape(sin(1:numel(W)), size(W)) \/ 10;$/;"	v
+W	debugInitializeWeights.m	/^W = zeros(fan_out, 1 + fan_in);$/;"	v
+W	randInitializeWeights.m	/^W = zeros(L_out, 1 + L_in);$/;"	v
+X	checkNNGradients.m	/^X  = debugInitializeWeights(m, input_layer_size - 1);$/;"	v
+X	fmincg.m	/^      X = X + z2*s;$/;"	v
+X	fmincg.m	/^    X = X0; f1 = f0; df1 = df0;  % restore point from before failed line search$/;"	v
+X	fmincg.m	/^  X = X + z1*s;                                             % begin line search$/;"	v
+X	submit.m	/^  X = reshape(3 * sin(1:1:30), 3, 10);$/;"	v
+X0	fmincg.m	/^  X0 = X; f0 = f1; df0 = df1;                   % make a copy of current values$/;"	v
+Xm	submit.m	/^  Xm = reshape(sin(1:32), 16, 2) \/ 5;$/;"	v
+argstr	fmincg.m	/^  argstr = [argstr, ',P', int2str(i)];$/;"	v
+argstr	fmincg.m	/^argstr = ['feval(f, X'];                      % compose string used to call function$/;"	v
+argstr	fmincg.m	/^argstr = [argstr, ')'];$/;"	v
+body	lib/submitWithConfiguration.m	/^  body = makePostBody(conf, email, token, parts);$/;"	v
+body	lib/submitWithConfiguration.m	/^  body = savejson('', bodyStruct, opt);$/;"	v
+c	lib/jsonlab/loadjson.m	/^        c = [];$/;"	v
+c	lib/jsonlab/loadjson.m	/^        c = inStr(pos);$/;"	v
+c	lib/jsonlab/loadubjson.m	/^        c = [];$/;"	v
+c	lib/jsonlab/loadubjson.m	/^        c = inStr(pos);$/;"	v
+cell2json	lib/jsonlab/savejson.m	/^function txt=cell2json(name,item,level,varargin)$/;"	f
+cell2ubjson	lib/jsonlab/saveubjson.m	/^function txt=cell2ubjson(name,item,level,varargin)$/;"	f
+checkNNGradients	checkNNGradients.m	/^function checkNNGradients(lambda)$/;"	f
+checkname	lib/jsonlab/savejson.m	/^function newname=checkname(name,varargin)$/;"	f
+checkname	lib/jsonlab/saveubjson.m	/^function newname=checkname(name,varargin)$/;"	f
+computeNumericalGradient	computeNumericalGradient.m	/^function numgrad = computeNumericalGradient(J, theta)$/;"	f
+costFunc	checkNNGradients.m	/^costFunc = @(p) nnCostFunction(p, input_layer_size, hidden_layer_size, ...$/;"	v
+costFunction	ex4.m	/^costFunction = @(p) nnCostFunction(p, ...$/;"	v
+curr_ex	displayData.m	/^		curr_ex = curr_ex + 1;$/;"	v
+curr_ex	displayData.m	/^curr_ex = 1;$/;"	v
+d1	fmincg.m	/^    d1 = -s'*s;$/;"	v
+d1	fmincg.m	/^    d1 = d2;$/;"	v
+d1	fmincg.m	/^d1 = -s'*s;                                                 % this is the slope$/;"	v
+d2	fmincg.m	/^      d2 = -s'*s;    $/;"	v
+d2	fmincg.m	/^      d2 = df2'*s;$/;"	v
+d2	fmincg.m	/^    d2 = df1'*s;$/;"	v
+d2	fmincg.m	/^    d2 = df2'*s;$/;"	v
+d2	fmincg.m	/^  d2 = df2'*s;$/;"	v
+data2byte	lib/jsonlab/saveubjson.m	/^function bytes=data2byte(varargin)$/;"	f
+debugInitializeWeights	debugInitializeWeights.m	/^function W = debugInitializeWeights(fan_out, fan_in)$/;"	f
+debug_J	ex4.m	/^debug_J  = nnCostFunction(nn_params, input_layer_size, ...$/;"	v
+diff	checkNNGradients.m	/^diff = norm(numgrad-grad)\/norm(numgrad+grad);$/;"	v
+displayData	displayData.m	/^function [h, display_array] = displayData(X, example_width)$/;"	f
+display_array	displayData.m	/^display_array = - ones(pad + display_rows * (example_height + pad), ...$/;"	v
+display_cols	displayData.m	/^display_cols = ceil(m \/ display_rows);$/;"	v
+display_rows	displayData.m	/^display_rows = floor(sqrt(m));$/;"	v
+e	computeNumericalGradient.m	/^e = 1e-4;$/;"	v
+e	lib/submitWithConfiguration.m	/^    e = lasterror();$/;"	v
+elem_info	lib/jsonlab/loadubjson.m	/^function [cid,len]=elem_info(type)$/;"	f
+email	lib/submitWithConfiguration.m	/^  email = input('Login (email address): ', 's');$/;"	v
+error_pos	lib/jsonlab/loadjson.m	/^function error_pos(msg)$/;"	f
+error_pos	lib/jsonlab/loadubjson.m	/^function error_pos(msg)$/;"	f
+esc	lib/jsonlab/loadjson.m	/^esc = find(inStr=='"' | inStr=='\\' ); % comparable to: regexp(inStr, '["\\\\]');$/;"	v
+esc	lib/jsonlab/loadubjson.m	/^esc = find(inStr=='"' | inStr=='\\' ); % comparable to: regexp(inStr, '["\\\\]');$/;"	v
+escapejsonstring	lib/jsonlab/savejson.m	/^function newstr=escapejsonstring(str)$/;"	f
+evaluation	lib/submitWithConfiguration.m	/^  evaluation = response.evaluation;$/;"	v
+example_height	displayData.m	/^example_height = (n \/ example_width);$/;"	v
+example_width	displayData.m	/^	example_width = round(sqrt(size(X, 2)));$/;"	v
+f1	fmincg.m	/^    f1 = f2; fX = [fX' f1]';$/;"	v
+f3	fmincg.m	/^    f3 = f2; d3 = d2; z3 = -z2;                  % set point 3 equal to point 2$/;"	v
+f3	fmincg.m	/^  f3 = f1; d3 = d1; z3 = -z1;             % initialize point 3 equal to point 1$/;"	v
+fX	fmincg.m	/^fX = [];$/;"	v
+fid	lib/jsonlab/loadjson.m	/^   fid = fopen(fname,'rb');$/;"	v
+fid	lib/jsonlab/loadubjson.m	/^   fid = fopen(fname,'rb');$/;"	v
+fid	lib/jsonlab/savejson.m	/^	    fid = fopen(opt.FileName, 'wb');$/;"	v
+fid	lib/jsonlab/savejson.m	/^	    fid = fopen(opt.FileName, 'wt');$/;"	v
+fid	lib/jsonlab/saveubjson.m	/^    fid = fopen(opt.FileName, 'wb');$/;"	v
+fieldName	lib/submitWithConfiguration.m	/^    fieldName = makeValidFieldName(partId);$/;"	v
+fmincg	fmincg.m	/^function [X, fX, i] = fmincg(f, X, options, P1, P2, P3, P4, P5)$/;"	f
+g	ex4.m	/^g = sigmoidGradient([-1 -0.5 0 0.5 1]);$/;"	v
+g	sigmoid.m	/^g = 1.0 .\/ (1.0 + exp(-z));$/;"	v
+g	sigmoidGradient.m	/^g = zeros(size(z));$/;"	v
+getResponse	lib/submitWithConfiguration.m	/^function response = getResponse(url, body)$/;"	f
+grad	nnCostFunction.m	/^grad = [Theta1_grad(:) ; Theta2_grad(:)];$/;"	v
+h	displayData.m	/^h = imagesc(display_array, [-1 1]);$/;"	v
+h1	predict.m	/^h1 = sigmoid([ones(m, 1) X] * Theta1');$/;"	v
+h2	predict.m	/^h2 = sigmoid([ones(m, 1) h1] * Theta2');$/;"	v
+hidden_layer_size	checkNNGradients.m	/^hidden_layer_size = 5;$/;"	v
+hidden_layer_size	ex4.m	/^hidden_layer_size = 25;   % 25 hidden units$/;"	v
+i	fmincg.m	/^  i = i + (length<0);                                          % count epochs?!$/;"	v
+i	fmincg.m	/^  i = i + (length>0);                                      % count iterations?!$/;"	v
+i	fmincg.m	/^i = 0;                                            % zero the run length counter$/;"	v
+i	fmincg.m	/^i = i + (length<0);                                            % count epochs?!$/;"	v
+id	lib/jsonlab/saveubjson.m	/^        id= histc(abs(max(mat(:))),[0 2^7 2^15 2^31 2^63]);$/;"	v
+index_esc	lib/jsonlab/loadjson.m	/^            index_esc = index_esc + 1;$/;"	v
+index_esc	lib/jsonlab/loadjson.m	/^index_esc = 1; len_esc = length(esc);$/;"	v
+index_esc	lib/jsonlab/loadubjson.m	/^index_esc = 1; len_esc = length(esc);$/;"	v
+initial_Theta1	ex4.m	/^initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);$/;"	v
+initial_Theta2	ex4.m	/^initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);$/;"	v
+initial_nn_params	ex4.m	/^initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];$/;"	v
+input_layer_size	checkNNGradients.m	/^input_layer_size = 3;$/;"	v
+input_layer_size	ex4.m	/^input_layer_size  = 400;  % 20x20 Input Images of Digits$/;"	v
+isHtml	lib/submitWithConfiguration.m	/^  isHtml = findstr(lower(resp), '<html');$/;"	v
+isJson	lib/submitWithConfiguration.m	/^  isJson = length(resp) > 0 && resp(1) == '{';$/;"	v
+isValid	lib/submitWithConfiguration.m	/^  isValid = (~isempty(i)) && (1 <= i) && (i <= numel(partOptions));$/;"	v
+isValidPartOptionIndex	lib/submitWithConfiguration.m	/^function isValid = isValidPartOptionIndex(partOptions, i)$/;"	f
+jcell2array	lib/jsonlab/loadjson.m	/^function newdata=jcell2array(data)$/;"	f
+jcell2array	lib/jsonlab/loadubjson.m	/^function newdata=jcell2array(data)$/;"	f
+jsonResponse	lib/submitWithConfiguration.m	/^  jsonResponse = validateResponse(responseBody);$/;"	v
+json_command	lib/submitWithConfiguration.m	/^      json_command = sprintf('echo ''jsonBody=%s'' | curl -k -X POST -d @- %s', body, url);$/;"	v
+json_command	lib/submitWithConfiguration.m	/^      json_command = sprintf('echo jsonBody=%s | curl -k -X POST -d @- %s', body, url);$/;"	v
+jsonopt	lib/jsonlab/jsonopt.m	/^function val=jsonopt(key,default,varargin)$/;"	f
+jstruct2array	lib/jsonlab/loadjson.m	/^function newdata=jstruct2array(data)$/;"	f
+jstruct2array	lib/jsonlab/loadubjson.m	/^function newdata=jstruct2array(data)$/;"	f
+lambda	checkNNGradients.m	/^    lambda = 0;$/;"	v
+lambda	ex4.m	/^lambda = 0;$/;"	v
+lambda	ex4.m	/^lambda = 1;$/;"	v
+lambda	ex4.m	/^lambda = 3;$/;"	v
+length	fmincg.m	/^    length = 100;$/;"	v
+length	fmincg.m	/^    length = options.MaxIter;$/;"	v
+limit	fmincg.m	/^      limit = z1;                                         % tighten the bracket$/;"	v
+loadjson	lib/jsonlab/loadjson.m	/^function data = loadjson(fname,varargin)$/;"	f
+loadubjson	lib/jsonlab/loadubjson.m	/^function data = loadubjson(fname,varargin)$/;"	f
+loss1	computeNumericalGradient.m	/^    loss1 = J(theta - perturb);$/;"	v
+loss2	computeNumericalGradient.m	/^    loss2 = J(theta + perturb);$/;"	v
+ls_failed	fmincg.m	/^    ls_failed = 0;                              % this line search did not fail$/;"	v
+ls_failed	fmincg.m	/^    ls_failed = 1;                                    % this line search failed$/;"	v
+ls_failed	fmincg.m	/^ls_failed = 0;                             % no previous line search has failed$/;"	v
+m	checkNNGradients.m	/^m = 5;$/;"	v
+m	ex4.m	/^m = size(X, 1);$/;"	v
+m	nnCostFunction.m	/^m = size(X, 1);$/;"	v
+m	predict.m	/^m = size(X, 1);$/;"	v
+makePartsStruct	lib/submitWithConfiguration.m	/^function partsStruct = makePartsStruct(conf, parts)$/;"	f
+makePostBody	lib/submitWithConfiguration.m	/^function body = makePostBody(conf, email, token, parts)$/;"	f
+makeValidFieldName	lib/makeValidFieldName.m	/^function str = makeValidFieldName(str)$/;"	f
+mat2json	lib/jsonlab/savejson.m	/^function txt=mat2json(name,item,level,varargin)$/;"	f
+mat2ubjson	lib/jsonlab/saveubjson.m	/^function txt=mat2ubjson(name,item,level,varargin)$/;"	f
+matching_bracket	lib/jsonlab/loadjson.m	/^function [endpos, e1l, e1r, maxlevel] = matching_bracket(str,pos)$/;"	f
+matching_bracket	lib/jsonlab/loadubjson.m	/^function [endpos e1l e1r maxlevel] = matching_bracket(str,pos)$/;"	f
+matching_quote	lib/jsonlab/loadjson.m	/^function endpos = matching_quote(str,pos)$/;"	f
+matching_quote	lib/jsonlab/loadubjson.m	/^function endpos = matching_quote(str,pos)$/;"	f
+matdata2json	lib/jsonlab/savejson.m	/^function txt=matdata2json(mat,level,varargin)$/;"	f
+matdata2ubjson	lib/jsonlab/saveubjson.m	/^function txt=matdata2ubjson(mat,level,varargin)$/;"	f
+max_val	displayData.m	/^		max_val = max(abs(X(curr_ex, :)));$/;"	v
+mergestruct	lib/jsonlab/mergestruct.m	/^function s=mergestruct(s1,s2)$/;"	f
+msg	lib/jsonlab/loadjson.m	/^    msg = [sprintf(msg, pos) ': ' ...$/;"	v
+msg	lib/jsonlab/loadubjson.m	/^    msg = [sprintf(msg, pos) ': ' ...$/;"	v
+names	lib/jsonlab/savejson.m	/^    names = fieldnames(item(i,j));$/;"	v
+names	lib/jsonlab/saveubjson.m	/^     names = fieldnames(item(i,j));$/;"	v
+next_char	lib/jsonlab/loadjson.m	/^function c = next_char$/;"	f
+next_char	lib/jsonlab/loadubjson.m	/^function c = next_char$/;"	f
+nnCostFunction	nnCostFunction.m	/^function [J grad] = nnCostFunction(nn_params, ...$/;"	f
+nn_params	checkNNGradients.m	/^nn_params = [Theta1(:) ; Theta2(:)];$/;"	v
+nn_params	ex4.m	/^nn_params = [Theta1(:) ; Theta2(:)];$/;"	v
+nstr	lib/jsonlab/loadjson.m	/^        nstr = length(str); switch inStr(pos)$/;"	v
+num_labels	checkNNGradients.m	/^num_labels = 3;$/;"	v
+num_labels	ex4.m	/^num_labels = 10;          % 10 labels, from 1 to 10   $/;"	v
+num_labels	predict.m	/^num_labels = size(Theta2, 1);$/;"	v
+numgrad	checkNNGradients.m	/^numgrad = computeNumericalGradient(costFunc, nn_params);$/;"	v
+numgrad	computeNumericalGradient.m	/^numgrad = zeros(size(theta));$/;"	v
+obj2json	lib/jsonlab/savejson.m	/^function txt=obj2json(name,item,level,varargin)$/;"	f
+obj2ubjson	lib/jsonlab/saveubjson.m	/^function txt=obj2ubjson(name,item,level,varargin)$/;"	f
+object	lib/jsonlab/loadjson.m	/^    object = [];$/;"	v
+object	lib/jsonlab/loadjson.m	/^    object = cell(0, 1);$/;"	v
+object	lib/jsonlab/loadubjson.m	/^    object = [];$/;"	v
+object	lib/jsonlab/loadubjson.m	/^    object = cell(0, 1);$/;"	v
+options	ex4.m	/^options = optimset('MaxIter', 50);$/;"	v
+out	submit.m	/^    out = [out sprintf('%0.5f ', grad)];$/;"	v
+out	submit.m	/^    out = sprintf('%0.5f ', J);$/;"	v
+out	submit.m	/^    out = sprintf('%0.5f ', sigmoidGradient(X));$/;"	v
+output	submit.m	/^function out = output(partId, auxstring)$/;"	f
+p	predict.m	/^p = zeros(size(X, 1), 1);$/;"	v
+pad	displayData.m	/^pad = 1;$/;"	v
+params	lib/submitWithConfiguration.m	/^  params = {'jsonBody', body};$/;"	v
+parseStr	lib/jsonlab/loadjson.m	/^function str = parseStr(varargin)$/;"	f
+parseStr	lib/jsonlab/loadubjson.m	/^function str = parseStr(varargin)$/;"	f
+parse_array	lib/jsonlab/loadjson.m	/^function object = parse_array(varargin) % JSON array is written in row-major order$/;"	f
+parse_array	lib/jsonlab/loadubjson.m	/^function object = parse_array(varargin) % JSON array is written in row-major order$/;"	f
+parse_block	lib/jsonlab/loadubjson.m	/^function [data adv]=parse_block(type,count,varargin)$/;"	f
+parse_char	lib/jsonlab/loadjson.m	/^function parse_char(c)$/;"	f
+parse_char	lib/jsonlab/loadubjson.m	/^function parse_char(c)$/;"	f
+parse_collection	lib/jsonlab/loadubjson.m	/^function newdata=parse_collection(id,data,obj)$/;"	f
+parse_number	lib/jsonlab/loadjson.m	/^function num = parse_number(varargin)$/;"	f
+parse_number	lib/jsonlab/loadubjson.m	/^function num = parse_number(varargin)$/;"	f
+parse_object	lib/jsonlab/loadjson.m	/^function object = parse_object(varargin)$/;"	f
+parse_object	lib/jsonlab/loadubjson.m	/^function object = parse_object(varargin)$/;"	f
+parse_value	lib/jsonlab/loadjson.m	/^function val = parse_value(varargin)$/;"	f
+parse_value	lib/jsonlab/loadubjson.m	/^function val = parse_value(varargin)$/;"	f
+partEvaluation	lib/submitWithConfiguration.m	/^    partEvaluation = response.partEvaluations.(makeValidFieldName(part{:}.id));$/;"	v
+partFeedback	lib/submitWithConfiguration.m	/^    partFeedback = '';$/;"	v
+partFeedback	lib/submitWithConfiguration.m	/^    partFeedback = response.partFeedbacks.(makeValidFieldName(part{:}.id));$/;"	v
+partId	lib/submitWithConfiguration.m	/^    partId = part{:}.id;$/;"	v
+parts	lib/submitWithConfiguration.m	/^  parts = parts(conf);$/;"	v
+parts	lib/submitWithConfiguration.m	/^  parts = {};$/;"	v
+parts	lib/submitWithConfiguration.m	/^function [parts] = parts(conf)$/;"	f
+perturb	computeNumericalGradient.m	/^perturb = zeros(size(theta));$/;"	v
+poShow	lib/jsonlab/loadjson.m	/^    poShow = max(min([pos-15 pos-1 pos pos+20],len),1);$/;"	v
+poShow	lib/jsonlab/loadubjson.m	/^    poShow = max(min([pos-15 pos-1 pos pos+20],len),1);$/;"	v
+pos	lib/jsonlab/loadjson.m	/^                        pos = pos + 1;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^                        pos = pos + 5;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^                pos = pos + 1;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^                pos = pos + 4;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^                pos = pos + 5;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^            pos = esc(index_esc);$/;"	v
+pos	lib/jsonlab/loadjson.m	/^            pos = len + 1;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^        pos = pos + 1;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^    pos = pos + delta-1;$/;"	v
+pos	lib/jsonlab/loadjson.m	/^pos = 1; len = length(string); inStr = string;$/;"	v
+pos	lib/jsonlab/loadubjson.m	/^            pos = pos + 1;$/;"	v
+pos	lib/jsonlab/loadubjson.m	/^        pos = pos + 1;$/;"	v
+pos	lib/jsonlab/loadubjson.m	/^    pos = pos + bytelen(id)+1;$/;"	v
+pos	lib/jsonlab/loadubjson.m	/^pos = 1; len = length(string); inStr = string;$/;"	v
+pred	ex4.m	/^pred = predict(Theta1, Theta2, X);$/;"	v
+predict	predict.m	/^function p = predict(Theta1, Theta2, X)$/;"	f
+printHTMLContents	lib/submitWithConfiguration.m	/^function printHTMLContents(response)$/;"	f
+prompt	lib/submitWithConfiguration.m	/^    prompt = sprintf( ...$/;"	v
+promptToken	lib/submitWithConfiguration.m	/^function [email token] = promptToken(email, existingToken, tokenFile)$/;"	f
+randInitializeWeights	randInitializeWeights.m	/^function W = randInitializeWeights(L_in, L_out)$/;"	f
+reenter	lib/submitWithConfiguration.m	/^    reenter = input(prompt, 's');$/;"	v
+response	lib/submitWithConfiguration.m	/^    response = resp;$/;"	v
+response	lib/submitWithConfiguration.m	/^    response = submitParts(conf, email, token, parts);$/;"	v
+response	lib/submitWithConfiguration.m	/^  response = loadjson(jsonResponse);$/;"	v
+responseBody	lib/submitWithConfiguration.m	/^  responseBody = getResponse(submissionUrl, body);$/;"	v
+s	fmincg.m	/^      s = -df1;                              % otherwise use steepest direction$/;"	v
+s	fmincg.m	/^    s = (df2'*df2-df1'*df2)\/(df1'*df1)*s - df2;      % Polack-Ribiere direction$/;"	v
+s	fmincg.m	/^    s = -df1;                                                    % try steepest$/;"	v
+s	fmincg.m	/^s = -df1;                                        % search direction is steepest$/;"	v
+savejson	lib/jsonlab/savejson.m	/^function json=savejson(rootname,obj,varargin)$/;"	f
+saveubjson	lib/jsonlab/saveubjson.m	/^function json=saveubjson(rootname,obj,varargin)$/;"	f
+score	lib/submitWithConfiguration.m	/^    score = '';$/;"	v
+score	lib/submitWithConfiguration.m	/^    score = sprintf('%d \/ %3d', partEvaluation.score, partEvaluation.maxScore);$/;"	v
+sel	ex4.m	/^sel = randperm(size(X, 1));$/;"	v
+sel	ex4.m	/^sel = sel(1:100);$/;"	v
+showFeedback	lib/submitWithConfiguration.m	/^function showFeedback(parts, response)$/;"	f
+sigmoid	sigmoid.m	/^function g = sigmoid(z)$/;"	f
+sigmoidGradient	sigmoidGradient.m	/^function g = sigmoidGradient(z)$/;"	f
+skip_whitespace	lib/jsonlab/loadjson.m	/^function skip_whitespace$/;"	f
+skip_whitespace	lib/jsonlab/loadubjson.m	/^function skip_whitespace$/;"	f
+str	lib/jsonlab/loadjson.m	/^            str = [str inStr(pos:esc(index_esc)-1)];$/;"	v
+str	lib/jsonlab/loadjson.m	/^            str = [str inStr(pos:len)];$/;"	v
+str	lib/jsonlab/loadjson.m	/^            str = parseStr(varargin{:});$/;"	v
+str	lib/jsonlab/loadjson.m	/^    str = '';$/;"	v
+str	lib/jsonlab/loadubjson.m	/^            str = parseStr(varargin{:});$/;"	v
+str2json	lib/jsonlab/savejson.m	/^function txt=str2json(name,item,level,varargin)$/;"	f
+str2ubjson	lib/jsonlab/saveubjson.m	/^function txt=str2ubjson(name,item,level,varargin)$/;"	f
+string	lib/jsonlab/loadjson.m	/^   string = fread(fid,inf,'uint8=>char')';$/;"	v
+string	lib/jsonlab/loadubjson.m	/^   string = fread(fid,inf,'uint8=>char')';$/;"	v
+strippedResponse	lib/submitWithConfiguration.m	/^  strippedResponse = regexprep(response, '<[^>]+>', ' ');$/;"	v
+strippedResponse	lib/submitWithConfiguration.m	/^  strippedResponse = regexprep(strippedResponse, '[\\t ]+', ' ');$/;"	v
+struct2json	lib/jsonlab/savejson.m	/^function txt=struct2json(name,item,level,varargin)$/;"	f
+struct2ubjson	lib/jsonlab/saveubjson.m	/^function txt=struct2ubjson(name,item,level,varargin)$/;"	f
+submissionUrl	lib/submitWithConfiguration.m	/^  submissionUrl = 'https:\/\/www-origin.coursera.org\/api\/onDemandProgrammingImmediateFormSubmi/;"	v
+submissionUrl	lib/submitWithConfiguration.m	/^  submissionUrl = submissionUrl();$/;"	v
+submissionUrl	lib/submitWithConfiguration.m	/^function submissionUrl = submissionUrl()$/;"	f
+submit	submit.m	/^function submit()$/;"	f
+submitParts	lib/submitWithConfiguration.m	/^function response = submitParts(conf, email, token, parts)$/;"	f
+submitWithConfiguration	lib/submitWithConfiguration.m	/^function submitWithConfiguration(conf)$/;"	f
+success	fmincg.m	/^      success = 1; break;                                             % success$/;"	v
+success	fmincg.m	/^  success = 0; limit = -1;                     % initialize quanteties$/;"	v
+t	submit.m	/^  t  = [t1(:) ; t2(:)];$/;"	v
+t1	submit.m	/^  t1 = sin(reshape(1:2:24, 4, 3));$/;"	v
+t2	submit.m	/^  t2 = cos(reshape(1:2:40, 4, 5));$/;"	v
+tmp	fmincg.m	/^    tmp = df1; df1 = df2; df2 = tmp;                         % swap derivatives$/;"	v
+token	lib/submitWithConfiguration.m	/^      token = existingToken;$/;"	v
+token	lib/submitWithConfiguration.m	/^  token = input('Token: ', 's');$/;"	v
+tokenFile	lib/submitWithConfiguration.m	/^  tokenFile = 'token.mat';$/;"	v
+totalScore	lib/submitWithConfiguration.m	/^  totalScore = sprintf('%d \/ %d', evaluation.score, evaluation.maxScore);$/;"	v
+true	lib/jsonlab/loadjson.m	/^    true = 1; false = 0;$/;"	v
+true	lib/jsonlab/loadubjson.m	/^    true = 1; false = 0;$/;"	v
+val	lib/jsonlab/loadjson.m	/^                val = [];$/;"	v
+val	lib/jsonlab/loadjson.m	/^                val = false;$/;"	v
+val	lib/jsonlab/loadjson.m	/^                val = struct;$/;"	v
+val	lib/jsonlab/loadjson.m	/^                val = true;$/;"	v
+val	lib/jsonlab/loadjson.m	/^            val = parseStr(varargin{:});$/;"	v
+val	lib/jsonlab/loadjson.m	/^            val = parse_array(varargin{:});$/;"	v
+val	lib/jsonlab/loadjson.m	/^            val = parse_number(varargin{:});$/;"	v
+val	lib/jsonlab/loadjson.m	/^            val = parse_object(varargin{:});$/;"	v
+val	lib/jsonlab/loadjson.m	/^            val = parse_value(newopt);$/;"	v
+val	lib/jsonlab/loadjson.m	/^            val = parse_value(varargin{:});$/;"	v
+val	lib/jsonlab/loadubjson.m	/^                val = struct;$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = [];$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = false;$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = parseStr(varargin{:});$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = parse_array(varargin{:});$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = parse_number(varargin{:});$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = parse_object(varargin{:});$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = parse_value(varargin{:});$/;"	v
+val	lib/jsonlab/loadubjson.m	/^            val = true;$/;"	v
+valid_field	lib/jsonlab/loadjson.m	/^function str = valid_field(str)$/;"	f
+valid_field	lib/jsonlab/loadubjson.m	/^function str = valid_field(str)$/;"	f
+validateResponse	lib/submitWithConfiguration.m	/^function response = validateResponse(resp)$/;"	f
+varargin2struct	lib/jsonlab/varargin2struct.m	/^function opt=varargin2struct(varargin)$/;"	f
+y	checkNNGradients.m	/^y  = 1 + mod(1:m, num_labels)';$/;"	v
+ym	submit.m	/^  ym = 1 + mod(1:16,4)';$/;"	v
+z1	fmincg.m	/^      z1 = z1 + z2;                                           % update the step$/;"	v
+z1	fmincg.m	/^    z1 = 1\/(1-d1);                     $/;"	v
+z1	fmincg.m	/^    z1 = z1 * min(RATIO, d1\/(d2-realmin));          % slope ratio but max RATIO$/;"	v
+z1	fmincg.m	/^    z1 = z1 + z2; X = X + z2*s;                      % update current estimates$/;"	v
+z1	fmincg.m	/^z1 = red\/(1-d1);                                  % initial step is red\/(|s|+1)$/;"	v
+z2	fmincg.m	/^        z2 = (limit-z1)\/2;                                   % otherwise bisect$/;"	v
+z2	fmincg.m	/^        z2 = (sqrt(B*B-A*d2*z3*z3)-B)\/A;       % numerical error possible - ok!$/;"	v
+z2	fmincg.m	/^        z2 = z1 * (EXT-1);                 % the extrapolate the maximum amount$/;"	v
+z2	fmincg.m	/^        z2 = z3 - (0.5*d3*z3*z3)\/(d3*z3+f2-f3);                 % quadratic fit$/;"	v
+z2	fmincg.m	/^        z2 = z3\/2;                  % if we had a numerical problem then bisect$/;"	v
+z2	fmincg.m	/^      z2 = (limit-z1)*(1.0-INT);$/;"	v
+z2	fmincg.m	/^      z2 = (limit-z1)\/2;                                               % bisect$/;"	v
+z2	fmincg.m	/^      z2 = -z3*INT;$/;"	v
+z2	fmincg.m	/^      z2 = max(min(z2, INT*z3),(1-INT)*z3);  % don't accept too close to limits$/;"	v
+z2	fmincg.m	/^      z2 = z1*(EXT-1.0);                           % set to extrapolation limit$/;"	v
+z2	fmincg.m	/^    z2 = -d2*z3*z3\/(B+sqrt(B*B-A*d2*z3*z3));        % num. error possible - ok!$/;"	v
+z3	fmincg.m	/^      z3 = z3-z2;                    % z3 is now relative to the location of z2$/;"	v
