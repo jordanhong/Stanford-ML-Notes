@@ -49,8 +49,14 @@ x = zeros(n, 1);
 %
 
 
-
-
+    % Get size of word indice list
+    %old_x = zeros(n, 1);
+    %m = size(word_indices, 2);
+    %for i=1:m
+    %    old_x((word_indices(i)))=1;
+    %end
+    x(word_indices)=1;
+    %sum(old_x~=x)
 
 
 
