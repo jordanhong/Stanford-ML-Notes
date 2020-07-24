@@ -1,0 +1,110 @@
+\section{Machine Learning System design}
+
+\subsection{Prioritizing what to work on: Spam Classification Example}
+    \begin{itemize}
+        \item Supervised learning.
+        \item \textbf{x} = features of email (words indicative of spam).
+        \item y = 1 (spam) or 0 (not spam). 
+        \item In practise, we take the most frequent n words (10000 to 50000) in training set to use as elements in x. 
+    \end{itemize}
+
+    Potential next steps:
+    \begin{enumerate}
+        \item Collect lots of data.
+        \item Develop sophisticated features, e.g. for email routing information, message body, etc. 
+        \item Sophisticated algorithms.
+    \end{enumerate}
+
+\subsection{Error Analysis}
+    \subsubsection{Recommended Approach}
+        \begin{itemize}
+            \item Start with simple algorithm that can be implemented quickly. Implement and test on \emph{Cross-validation data}. 
+            \item Plot learning curves to decide if more data or more features will help. 
+            \item Error analysis: Manually examine errors from the examples in \emph{cross-validation} set. Observe any systematic trend. 
+        \end{itemize} 
+
+    \subsubsection{Error Analysis}
+        Questions to ask:
+        \begin{enumerate}
+            \item What type of email it is.
+            \item What cues (features) do you think would have helped the algorithm to classify them correctly. 
+        \end{enumerate}
+
+    \subsubsection{The importance of numerical evaluation}
+        \begin{itemize}
+            \item Should discount/discounts/discounted/discounting be treated as the same word? 
+                \begin{itemize}
+                    \item Use "stemming" software, e.g. \emph{Porter Stemmer}
+                \end{itemize}
+            \item Error analysis might not help. Instead, try and see it it works.
+            \item Need metric (numerical evaluation) of algorithm to evaluate performance. E.g. cross validation error.
+        \end{itemize}
+\subsection{Error Metrics for Skewed Classes}
+    \subsubsection{Motivation} 
+        Consider case for cancer classification. If we get 1\% error on the test set, i.e. 99\% diagnoses are correct. However, only 0.5\% of patients have cancer in the first place. Is the 1\% error a good evaluation?
+        Furthermore, consider the example prediction algorithm:
+        \begin{lstlisting}
+            function y = predictCancer(x)
+                y=0; %ignore x!
+            return
+        \end{lstlisting}
+
+        Regardless of the dataset, the hypothesis will always predict y=0. 
+    \subsubsection{Precision/Recall}
+
+        \begin{table}[htbp]
+                \begin{center}
+                     \begin{tabular}{|c||c|c|c|}
+                         \hline
+                         & Actual &   1               &   0  \\
+                         \hline
+                         \hline
+                         Prediction &1               &   True positive   &   False positive  \\
+                         \hline 
+                         & 0               &   False negative  &   True negative   \\
+                         \hline
+                    \end{tabular}
+                 \caption{Truth Table}
+                 \label{tab:truth-table}
+             \end{center}
+         \end{table}
+
+
+        We can thus define two measures of accuracy:
+        \begin{equation}
+            \mathbf{precision} = \frac{\text{True pos}}{\text{No. of predicted pos}} = \frac{\text{True pos}}{\text{True pos + False pos}}
+            \label{eq:precision}
+        \end{equation}
+
+        \begin{equation}
+            \mathbf{recall} = \frac{\text{True pos}}{\text{No. of actual pos}} = \frac{\text{True pos}}{\text{True pos + False neg}}
+            \label{eq:recall}
+        \end{equation}
+
+        \fbox{
+        Convention: Define y=1 in presence of \emph{rare class} that we want to detect.
+    }
+
+\subsection{Trading off Precision and Recall}
+Recall that for logistic regression, we have the hypothesis $0 \leq h_\theta(x) \leq 1$. Note that earlier we set the threshold to be 0.5. Now we can set the threshold higher (e.g, 0.8 for a more confident prediction), or lower (e.g. 0.3 for a greater coverage).\\ 
+    \par Consider two use cases:
+    \begin{enumerate}
+        \item Suppose we want to predict y=1 (cancer) only if we are very confident: We will set the threshold to be high.\\
+            High precision, low recall.
+        \item Suppose we want to avoid missing too many cases of cancer (avoid false negatives): We will set the threshold to be low.\\
+            High recall, low precision.
+    \end{enumerate}
+
+    \subsubsection{F\textsubscript{1} score}
+        Now that we have two metrics, precision and recall, we need a method to combine the two into a single metric evaluation for comparison purposes. An initial step may be to use the arithmetic mean. However, this can be inaccurate when either precision or recall is extremely high and the other extremely low. The mean will yield a somewhat high value. We need a better metric. Here we propose the F\textsubscript{1} score:
+        \begin{equation}
+            F_1 = 2 \: \frac{PR}{P+R}
+            \label{eq:f1-score}
+        \end{equation}
+    \subsubsection{Large Data Rationale}
+    At some point, we will need to acquire more data. A larger dataset is useful when $x\in\mathbb{R}^{n+1}$ has sufficient information to predict y accurately. 
+    A useful mental test is: given the input x, can a human expert confidently predict y?
+
+    When we use a learning algorithm with many parameters, e.g. logistic regression, linear regression with many features; neural network with many hidden units. This ensures a low bias algorithm. Therefore $J_{train} (\Theta)$ will be small. 
+    \par Now, we can then use a large training set (which is unlikely to overfit) and ensure low variance. In such case, $J_{train} (\Theta) \approx J_{test}(\Theta)$, which makes the test error low. 
+
