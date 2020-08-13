@@ -131,7 +131,9 @@ Theta2_grad = zeros(size(Theta2));
         D_2 = D_2 + d_2;
         D_1 = D_1 + d_1; 
     end
-
+    
+    % Here the two gradients are average
+    % We use D_2 and D_1 as accum
     Theta2_grad = D_2/m;
     Theta1_grad = D_1/m;
 
