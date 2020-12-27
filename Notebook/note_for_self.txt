@@ -1,0 +1,2 @@
+Progress: 
+- Completed SVM notes till slides page 25, notes page 11/13
