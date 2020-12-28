@@ -248,3 +248,55 @@ Recall in Figure \ref{fig:SVM-cost1} and \ref{fig:SVM-cost0}, we re-defined the 
         \item Small $\sigma^2$: (changes abruptly) lower bias, higher variance.
     \end{enumerate}
 
+\subsection{Using an SVM}
+    \begin{itemize}
+        \item Use SVM software package (e.g. linlinear, libsvm, $\dots$) to sole for parameters $\theta$
+        \item Specification: 
+            \begin{enumerate}
+                \item Parameter C.
+                \item Kernel (similarity function) 
+                        \begin{itemize}
+                            \item No kernel ("linear kernel"): predicts "y=1" if $\theta^T x \geq 0$.
+                            \item Guassian kernel: $f_i = exp ( - \frac{\| x-l^{(i)}\|^2}{2\sigma^2})$, need to choose $\sigma^2$, perform feature scaling.
+                        \end{itemize}
+            \end{enumerate}
+        \item Other choices of kernel: not all similarity functions make valid kernels. Need to satisfy \emph{Mercer's Theorem} for convergence. Off-the-shelf kernels:
+            \begin{itemize}
+                \item Polynomial kernel
+                \item String kernels (text)
+                \item Chi-squared kernel
+                \item Histogram intersection kernel
+            \end{itemize}
+    \end{itemize}
+
+\subsection{Multiclass Classification}
+For illustration, see Figure \ref{fig:multi-class-svm}. Many SVM packages have built-in functionalities. Otherwise, we can implement using one-vs-all method:
+\begin{itemize}
+    \item Train K SVMs, each distinguish $y=i, \forall i = 1, 2, \dots K$ from the rest.
+    \item Get $\theta^{(1)}$, $\theta^{(2)}$, $\theta^{(3)}$, $\dots$, $\theta^{(K)}$.
+    \item Pick class $i$ with largest $(\theta^{(i)})^T x$.
+
+
+\end{itemize}
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{image/multi-class-svm.png}
+    \caption{Multiclass SVM}
+    \label{fig:multi-class-svm}
+\end{figure}
+
+
+\subsection{Logistic Regression v.s. SVMs}
+    Let:
+    \begin{itemize}
+        \item $n$ = number of features ($x \in \mathbb{R}^{n+1}$)
+        \item $m$ = number of training examples.
+    \end{itemize}
+
+    \begin{enumerate}
+        \item If $n \gg m$: use logistic regression, or SVM without a kernel (linear kernel).
+        \item If $n < m$: use SVM with Guassian Kernel.
+        \item IF $n \ll m$: Create/add more features, then use logistic regression or SVM without a kernel.
+        \item  Neural network: likely to work in all cases, but may be slower to train.
+    \end{enumerate}
+    

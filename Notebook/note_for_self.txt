@@ -1,2 +1,3 @@
 Progress: 
-- Completed SVM notes till slides page 25, notes page 11/13
+- Completed SVM notes till slides page 25, notes page 11/13 [2020-12-27]
+- Completed SVM (Week 7) quiz and notes [2020-12-28]
