@@ -12,6 +12,16 @@
 
 \author{Jordan Hong}
 \date{\today}
+\usepackage{algorithm, algorithmic}
+\newlength\myindent % define a new length \myindent
+\setlength\myindent{2em} % assign the length 2em to \myindet
+\newcommand\bindent{%
+  \begingroup % starts a group (to keep changes local)
+  \setlength{\itemindent}{\myindent} % set itemindent (algorithmic internally uses a list) to the value of \mylength
+  \addtolength{\algorithmicindent}{\myindent} % adds \mylength to the default indentation used by algorithmic
+}
+\newcommand\eindent{\endgroup} % closes a group
+
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage{caption}
@@ -55,7 +65,6 @@
 
 
 
-
 \begin{document}
 \maketitle
 \tableofcontents
@@ -72,6 +81,7 @@
     \input{lec10.tex}
     \input{lec11.tex}
     \input{lec12.tex}
+    \input{lec13.tex}
 
 \end{document}
 
