@@ -3,25 +3,15 @@
 % Last Change: Mon May 18 11:00 pm 2020 E
 %
 \documentclass[letter]{article}
-\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}} % for complicated matrices
-\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
 \title{%
     Machine Learning\\
     \large Stanford University \\
     Professor Andrew Ng}
 
 \author{Jordan Hong}
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}} % for complicated matrices
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
 \date{\today}
-\usepackage{algorithm, algorithmic}
-\newlength\myindent % define a new length \myindent
-\setlength\myindent{2em} % assign the length 2em to \myindet
-\newcommand\bindent{%
-  \begingroup % starts a group (to keep changes local)
-  \setlength{\itemindent}{\myindent} % set itemindent (algorithmic internally uses a list) to the value of \mylength
-  \addtolength{\algorithmicindent}{\myindent} % adds \mylength to the default indentation used by algorithmic
-}
-\newcommand\eindent{\endgroup} % closes a group
-
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage{caption}
@@ -29,7 +19,7 @@
 %\usepackage{color}   %May be necessary if you want to color links
 \usepackage{hyperref}
 \hypersetup{
-    linktoc=all,     %set to all if you want both sections and subsections linked
+    linktoc=all     %set to all if you want both sections and subsections linked
 }
 \usepackage{amsmath}
 \usepackage{listings}
@@ -61,8 +51,15 @@
     gobble=8,%
     tabsize=4
 }
-
-
+\usepackage{algorithm, algorithmic}
+\newlength\myindent % define a new length \myindent
+\setlength\myindent{2em} % assign the length 2em to \myindet
+\newcommand\bindent{%
+  \begingroup % starts a group (to keep changes local)
+  \setlength{\itemindent}{\myindent} % set itemindent (algorithmic internally uses a list) to the value of \mylength
+  \addtolength{\algorithmicindent}{\myindent} % adds \mylength to the default indentation used by algorithmic
+}
+\newcommand\eindent{\endgroup} % closes a group
 
 
 \begin{document}
@@ -82,6 +79,7 @@
     \input{lec11.tex}
     \input{lec12.tex}
     \input{lec13.tex}
+    \input{lec14.tex}
 
 \end{document}
 
