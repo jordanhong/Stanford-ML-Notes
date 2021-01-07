@@ -27,6 +27,28 @@ centroids = zeros(K, n);
 %
 
 
+% Loop through clusters
+for k = 1:K
+
+    c = 0;      % Initialize count
+
+    % Loop through trainiing examples
+    for i = 1:m
+
+        % Find points assign to the cluster
+        if idx(i)== k
+            centroids(k, :) =  centroids(k, :) + X(i, :);
+            c = c + 1;
+        end
+    end
+
+    % Compute the mean
+    if c != 0
+        centroids(k, :) = (centroids(k, :)) ./ c;
+    end
+end
+
+
 
 
 

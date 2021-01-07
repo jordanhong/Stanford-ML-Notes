@@ -21,9 +21,22 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+% Compute mean
 
+for i = 1:size(X,1)
+    % example i
+    
+    mu = centroids;
+    x = X(i, :);
+    % Compute error squared
+    err = (mu .- x);
+    err_sq = sum(err .* err, 2);
 
+    % Assign idx(i) to be index of smallest error squared
+    [min_val, min_idx] = min(err_sq);
+    idx(i, 1) = min_idx;
 
+end
 
 
 
