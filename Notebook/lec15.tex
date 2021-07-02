@@ -1,0 +1,132 @@
+\section{Anomaly Detection}
+    \subsection{Motivation: Density Estimation}
+        Generate a function \emph{p(x)}, such that $p(x) < \epsilon$ suggest anomaly. 
+        The crux is to flag unusual behaviour, for example: 
+        \begin{itemize}
+            \item Fraud detection
+            \item Manufacturing 
+            \item Computer load in data center
+        \end{itemize}
+
+        \subsubsection{Guassian distribution}
+            \begin{equation}
+                x \sim \mathcal{N}(\mu, \sigma^2)
+                \label{eq:guassian}
+            \end{equation}
+
+            \begin{itemize}
+                \item $\mu$: mean
+                \item $\sigma^2$: variance
+            \end{itemize}
+
+    \subsection{Algorithm}
+        \begin{enumerate}
+            \item Choose features $x_i$ that are indicative of anomalous examples. 
+            \item Fit parameters 
+                \begin{equation}
+                \boldsymbol{\mu} = \begin{bmatrix}
+                                            \mu_1       \\
+                                            \vdots      \\
+                                            \mu_i       \\
+                                            \vdots      \\
+                                            \mu_n       
+                                        \end{bmatrix} = \frac{1}{m} \sum_{i=1}^{m} x_j^{(i)}
+                    \label{eq:anomaly-mu}
+                \end{equation} 
+                                        and 
+                \begin{equation}
+                \boldsymbol{\sigma^2} = \begin{bmatrix}
+                    \sigma^2_1       \\
+                    \vdots      \\
+                    \sigma^2_i       \\
+                    \vdots      \\
+                    \sigma^2_n       
+                \end{bmatrix} = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu)^2
+                    \label{eq:anomaly-sigma-squared}
+                \end{equation}
+        \item Given new example $x$, compute $p(x)$: 
+                \begin{equation}
+                    p(x) = \prod_{j=1}^{n} p(x_j;\mu_j, \sigma^2_j) = \prod_{j=1}^{n} \frac{1}{\sqrt{2 \pi} \sigma_j} exp(\frac{-(x_j - \mu_j)^2}{2 \mu_j ^2})
+                    \label{eq:anomaly-p}
+                \end{equation}
+
+            Anomaly if $p(x) < \epsilon$
+
+        \end{enumerate}
+    \subsection{Developing and Evaluating an Anomaly Detection System}
+        Dividing labelled data:
+        \begin{itemize}
+            \item Training set: 60\%.
+            \item Cross validation set: 20\%
+            \item Test set: 20\%.
+        \end{itemize}
+    
+    \subsection{Anomaly Detection vs Supervised Learning}
+    Refer to Table \ref{tab:anomaly_detection_vs_supervised_learning}. 
+
+    \begin{table}[htpb]
+            \centering
+            \begin{tabular}{|p{0.5\linewidth}|p{0.5\linewidth}|}
+                \hline
+                Anomaly detection & Supervised learning \\
+                \hline
+                Small number of positive examples [y=1] (0-20) and large number of negative examples [y=0] & Large number of positive and negative examples \\
+                \hline 
+                Many different types of anomalies. Hard to learn anomalies from positive examples.  & Enough positive examples to learn positivity. \\
+                \hline 
+                Future anomalies may look nothing like previous anomalies & Future positive examples similar to training set.\\
+                \hline
+            \end{tabular}
+            \caption{Anomaly detection vs Supervised learning}
+            \label{tab:anomaly_detection_vs_supervised_learning}
+        \end{table}
+    
+    \section{Choosing what features to use}
+        \begin{itemize}
+            \item \textbf{Goal}: Want $p(x)$ large for normal examples x; $p(x)$ small for anomalous examples x. 
+            \item Ideally require Guassian features. 
+            \item If not Guassian, require preprocessing, e.g. log(), $\sqrt{x}$, etc. 
+            \item Most common problem: $p(x)$ is comparable for both normal and anomalous examples $\rightarrow$ come up with new features (e.g. ratios of current fetatures. )
+        \end{itemize}
+            
+    \subsection{Multivariate Guassian Distribution}
+        
+    $x \in \mathbb{R}^n$. Model $p(x)$ with all dimensions in tandem. Parameters: $\boldsymbol{\mu} \in \mathbb{R}^n$, $\Sigma \in \mathbb{R}^{n \times n}$ (covariance matrix).
+        
+        \subsubsection{Anomaly detection using multivariate Guassian distribution}
+        \begin{equation}
+            p(x; \mu, \Sigma) = \frac{1}{(2\pi)^{n/2} |\Sigma|^{1/2}} exp (- \frac{1}{2} (x -\mu)^T \Sigma ^{-1} (x-\mu))        
+            \label{eq:multivariate_anomaly_p}
+        \end{equation}
+        where 
+            \begin{equation}
+                \mu = \frac{1}{m} \sum_{i=1}^{m} x^{(i)}
+                \label{eq:anomaly-mu-2}
+            \end{equation}
+
+            \begin{equation}
+                \Sigma = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)}-\mu) (x^{(i)}-\mu)^T
+                \label{eq:}
+            \end{equation}
+
+
+        \subsubsection{Original model vs Multivariate Guassian}
+            \begin{table}[htpb]
+                \centering
+                \begin{tabular}{|p{0.5\linewidth}|p{0.5\linewidth}|}
+                    \hline
+                    Original model & Multivariate Guassian \\
+                    \hline
+                    $\prod_{j=1}^{n} p(x_j;\mu_j, \sigma^2_j)$ (Eq. \ref{eq:anomaly-p} )& Eq. \ref{eq:multivariate_anomaly_p} \\
+                    \hline
+                    Manually combine features to capture anomalies & Automatically captures correlations between features. \\
+                    \hline
+                    Computationally cheaper and scales well & Computationally expensive (matrix) \\
+                    \hline 
+                    Works on small training set size (m) & Must have training set size (m) $>$ features size (n), i/e/ m $geq$ 10n for $\Sigma$ to be invertible.\\
+                    \hline
+                    
+                \end{tabular}
+                \caption{Anomaly detection: original model vs multivariate Guassian}
+                \label{tab:anomaly-origin-multivariate}
+            \end{table}
