@@ -54,12 +54,26 @@
 
         \end{enumerate}
     \subsection{Developing and Evaluating an Anomaly Detection System}
-        Dividing labelled data:
-        \begin{itemize}
-            \item Training set: 60\%.
-            \item Cross validation set: 20\%
-            \item Test set: 20\%.
-        \end{itemize}
+        \subsubsection{Developing}
+            In a typical anomaly detection setting, we have a large number of anomalous examples, and a relatively small number of normal/non-anomalous examples.
+            Dividing labelled data:
+            \begin{itemize}
+                \item Training set: 60\% of normal (y=0); no anomalies.
+                \item Cross validation set: 20\% of normal (y=0); 50\% anomalies (y=1).
+                \item Test set: 20\% of normal (y=0); 50\% anomalies (y=1).
+            \end{itemize}
+            
+        \subsubsection{Evaluation}
+            \begin{itemize}
+                \item Real-number evaluation
+                \item Evaluation metrics: 
+                    \begin{itemize}
+                        \item True positive, false positive, false negative, true negative
+                        \item Precision/Recall
+                        \item $F_1$ score
+                    \end{itemize}
+                \item If no labelled data (or all data labelled as y=0), it is still possible to learn $p(x)$, but harder to evaluate the system or choose a good value of $\epsilon$.
+            \end{itemize}
     
     \subsection{Anomaly Detection vs Supervised Learning}
     Refer to Table \ref{tab:anomaly_detection_vs_supervised_learning}. 
@@ -81,7 +95,7 @@
             \label{tab:anomaly_detection_vs_supervised_learning}
         \end{table}
     
-    \section{Choosing what features to use}
+    \subsection{Choosing what features to use}
         \begin{itemize}
             \item \textbf{Goal}: Want $p(x)$ large for normal examples x; $p(x)$ small for anomalous examples x. 
             \item Ideally require Guassian features. 
@@ -110,7 +124,9 @@
             \end{equation}
 
 
+
         \subsubsection{Original model vs Multivariate Guassian}
+        Refer to Table \ref{tab:anomaly-origin-multivariate}.
             \begin{table}[htpb]
                 \centering
                 \begin{tabular}{|p{0.5\linewidth}|p{0.5\linewidth}|}

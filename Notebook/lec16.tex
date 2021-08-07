@@ -1,0 +1,59 @@
+\section{Recommender Systems}
+    \subsection{Problem formulation}
+        \begin{enumerate}
+            \item X = $\left\lbrack 
+                \begin{array}{c}
+                    -{\;\left(x^{\left(1\right)} \right)}^T -\\
+                    -{\;\left(x^{\left(2\right)} \right)}^T -\\
+                    \vdots \\
+                    -{\;\left(x^{\left(n_m \right)} \right)}^T -
+                \end{array}
+                \right\rbrack$  For each movie $i$ ($i = 1 \dots n_m$), form a feature vector $x^{(i)}$ to characterize the movie. 
+            \item $\Theta$ = $\left\lbrack 
+                \begin{array}{c}
+                    -{\;\left(\theta^{\left(1\right)} \right)}^T -\\
+                    -{\;\left(\theta^{\left(2\right)} \right)}^T -\\
+                    \vdots \\
+                    -{\;\left(\theta^{\left(n_u \right)} \right)}^T -
+                \end{array}
+                \right\rbrack$ For each use $j$ ($j = 1 \dots n_u$), there is a parameter vector $\theta^{(j)}$ that characterizes the user's interest, such that $(\theta^{(j)})^T x^{(i)}$ is a prediction of user $j$'s rating on movie $i$. 
+            \item $Y$ = \{ $y(i,j)$ \}, where $y(i,j)$ is the actual ratings of use $j$ on movie $i$.
+            \item $R$ = \{ $r(i,j)$ \}, where $r(i,j)$ is the "valid" bit for $y(i,j)$, i.e. if user $i$ gave a rating on movie $i$.
+        \end{enumerate}
+    \subsection{Collaborative filtering}
+    The cost function for collaborative filtering with regularization is: 
+        \begin{equation}
+            J(X, \Theta)=
+\frac{1}{2}\sum_{(i,j):r(i,j)=1}\left((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\right)^2+\left(\frac{\lambda}{2}\sum_{j=1}^{n_u}{\sum_{k=1}^{n}{(\theta_k^{(j)})^2}}\right)+\left(\frac{\lambda}{2}\sum_{i=1}^{n_m}{\sum_{k=1}^{n}{(x_k^{(i)})^2}}\right)
+            \label{eq:collab-filter-reg}
+        \end{equation}
+
+    One can then apply gradient descent: 
+
+    \begin{equation}
+        \theta^{(j)}_k := \theta^{(j)}_k - \alpha   \sum_{i:r(i,j) = 1}^{} \frac{\partial }{\partial \theta_k^{(j)}} J(X, \Theta)
+        \label{eq:collab-filter-reg-grad-desc-theta}
+    \end{equation}
+    \begin{equation}
+        x^{(i)}_k := x^{(i)}_k - \alpha   \sum_{i:r(i,j) = 1}^{} \frac{\partial }{\partial x_k^{(j)}} J(X, \Theta) 
+        \label{eq:collab-filter-reg-grad-desc-x}
+    \end{equation}
+
+    where
+    \begin{equation}
+\frac{\partial J}{\partial x_k^{(i)}} = \sum_{j:r(i,j)=1}\left((\theta^{(j)})^T 
+x^{(i)} -y^{(i,j)}\right)\theta_k^{(j)}+\lambda x_k^{(i)}
+        \label{eq:collab-filter-grad-Jx}
+    \end{equation}
+    \begin{equation}
+\frac{\partial J}{\partial \theta_k^{(j)}} = \sum_{i:r(i,j)=1}\left((\theta^{(j)})^T x^{(i)} -y^{(i,j)}\right) x_k^{(i)}+\lambda\theta_k^{(j)}
+        \label{eq:collab-filter-grad-Jtheta}
+    \end{equation}
+
+
+    The collaborative filtering algorithm is:
+    \begin{enumerate}
+        \item Initialize $x^{(i)}, \theta^{(j)}$ to small random values. 
+        \item Minimize $J(X, \Theta)$ using gradient descent.
+        \item Predict user $i$ rating on movie $j$ via $(\theta^{(j)})^T x^{(i)}$
+    \end{enumerate}
