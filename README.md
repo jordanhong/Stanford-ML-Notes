@@ -6,3 +6,4 @@ The online course can be accessed here: <https://www.coursera.org/learn/machine-
 ## My Course Materials
  
 All Latex course notes, programming exercises are completed as of Dec 31, 2021. Well done Jordan!
+Check out my complied latex note for the entire course [here](Notebook/Master.pdf).
